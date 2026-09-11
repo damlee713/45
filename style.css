@@ -1,0 +1,256 @@
+/* 모든 요소의 크기 계산 방식을 통일 */
+* {
+  box-sizing: border-box;
+}
+
+/* 페이지 기본 설정 */
+body {
+  margin: 0;
+
+  background-color: #000000;
+  color: #ffffff;
+
+  font-family: "Pretendard", sans-serif;
+}
+/* -----------------------------
+    header
+----------------------------- */
+.header{
+    width: 100%;
+    min-width: 960px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+.header_inner{
+    width: 100%;
+
+    margin: 0 auto;
+    padding: 24px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header_logo {
+    font-size: 48px;
+    line-height: 1;
+    text-decoration: none;
+}
+.header_right{
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+/* 메뉴 목록 */
+.nav ul{
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 48px;
+
+    list-style: none;
+}
+
+/* 메뉴 링크 */
+.nav ul a{
+    color:#ffffff;
+    text-decoration: none;
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav ul a:hover {
+    color: #BBFF00;
+}
+
+/* 문의하기 버튼 */
+.btn_contact{
+    padding: 12px 32px;
+
+    border: 2px solid #ffffff;
+    border-radius: 999px;
+
+    color:#ffffff;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    transition: background-color 0.3s ease;
+}
+.btn_contact:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+/* -----------------------------
+    hero
+----------------------------- */
+.hero{
+    min-width: 960px;
+    min-height: 100vh;
+
+    padding: 80px 20px 40px;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero_img{
+    width: clamp(580px, 50vw, 860px);
+    height: auto;
+
+    object-fit: contain;
+}
+/* -----------------------------
+    about
+----------------------------- */
+
+.about {
+    padding: 180px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about_text{
+    max-width: 1100px;
+
+    text-align: center;
+    margin-top: 32px;
+}
+
+.about_text p{
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.6;
+
+    word-break: keep-all;
+}
+
+.about_text strong{
+    font-weight: 700;
+}
+
+/* 수치 전체 영역 */
+.about_stats{
+    width: 100%;
+    max-width: 1200px;
+
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 각각의 수치 영역 */
+.about_stat{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Since Project */
+.about_label{
+    margin-bottom: 20px;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* Number */
+.about_number{
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:  76px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* 세로선 */
+.about_divider{
+    width: 1px;
+    height: 128px;
+
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.about_tag {
+    width: 100%;
+    text-align: center;
+}
+.contact {
+    min-height: 100vh;
+    padding: 140px 20px 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact_letter {
+    width: 100%;
+    max-width: 700px;
+
+    text-align: center;
+}
+/* -----------------------------
+   Zombie Cursor
+----------------------------- */
+
+.zombie_slime {
+    position: fixed;
+
+    width: 10px;
+    height: 10px;
+
+    background-color: #BBFF00;
+    border-radius: 50%;
+
+    pointer-events: none;
+    z-index: 9999;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow: 0 0 10px #BBFF00;
+
+    animation: slime_fade 1.5s ease forwards;
+}
+
+@keyframes slime_fade {
+
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    70% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+
+}

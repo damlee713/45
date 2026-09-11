@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쩜비</title>
+
+  <!-- Pretendard 웹폰트 연결 -->
+  <link
+    rel="stylesheet"
+    crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+  >
+
+  <!-- Anton 웹폰트 연결 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS 연결 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 배경 은은한 무드 조명 효과 -->
+    <div class="bg_glow bg_glow_1" aria-hidden="true"></div>
+    <div class="bg_glow bg_glow_2" aria-hidden="true"></div>
+
+    <!-- Header 시작 -->
+    <header class="header">
+        <div class="header_inner">
+            <!-- 로고 -->
+            <a href="index.html" class="header_logo" aria-label="쩜비">
+               🧟‍♀️
+            </a>
+
+            <!-- 오른쪽 메뉴 전체 -->
+            <div class="header_right">
+                <!-- 주요 메뉴 -->
+                <nav class="nav" aria-label="주요메뉴">
+                    <ul class="nav_list">
+                        <li><a href="#about">GRAVEYARD</a></li>
+                        <li><a href="#project">ZOMBIES</a></li>
+                        <li><a href="contact.html">BITE US</a></li>
+                    </ul>
+                </nav>
+
+                <!-- 문의하기 버튼 -->
+                <a href="contact.html" class="btn_contact">
+                    <span>물리러 가기 🧟</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main 시작 -->
+    <main>
+        <!-- Hero 시작 -->
+        <section class="hero">
+            <div class="hero_content">
+                <div class="hero_badge reveal_item"></div>
+                <div class="hero_img_wrap reveal_item">
+                    <img class="hero_img" src="images/main.png" alt="쩜비 메인">
+                </div>
+                <div class="hero_scroll reveal_item">
+                    <span class="scroll_text">ENTER IF YOU DARE</span>
+                    <span class="scroll_line"></span>
+                </div>
+            </div>
+        </section>
+        <!-- Hero 끝 -->
+
+        <!-- about 시작 -->
+        <section class="about" id="about">
+            <div class="about_tag reveal_item">WELCOME TO THE GRAVEYARD</div>
+            <div class="about_text reveal_item">
+                <p>우리는 무덤에서 기어 나온 <strong>아이디어 좀비들</strong>입니다.</p>
+                <p>죽어버린 아이디어를 물어뜯고 되살려 <strong>살아 움직이는 무언가</strong>로 만들어냅니다.</p>
+                <p>웹이든 앱이든 AI든 상관없습니다. <strong>일단 물면 끝까지 갑니다.</strong> 🧟</p>
+            </div>
+
+            <div class="about_stats reveal_item">
+                <!-- Since -->
+                <div class="about_stat">
+                    <span class="about_label">OUTBREAK SINCE</span>
+                    <h2 class="about_number" data-target="2001">2001</h2>
+                    <span class="about_sub">최초 감염 발생</span>
+                </div>
+
+                <!-- 가운데 세로 구분선 -->
+                <div class="about_divider"></div>
+
+                <!-- Project -->
+                <div class="about_stat">
+                    <span class="about_label">INFECTED</span>
+                    <h2 class="about_number" data-target="1000" data-suffix="+">1000+</h2>
+                    <span class="about_sub">감염시킨 클라이언트</span>
+                </div>
+            </div>
+        </section>
+        <!-- about 끝 -->
+    </main>
+    <!-- Main 끝 -->
+
+    <script>
+        document.addEventListener('mousemove', (event) => {
+
+            const slime = document.createElement('div');
+            slime.classList.add('zombie_slime');
+
+    const randomSize = Math.random() * 12 + 6;
+
+    slime.style.width = randomSize + 'px';
+    slime.style.height = randomSize + 'px';
+
+    slime.style.left = event.clientX + 'px';
+    slime.style.top = event.clientY + 'px';
+
+    document.body.appendChild(slime);
+
+    setTimeout(() => {
+        slime.remove();
+    }, 1500);
+
+});
+    </script>
+</body>
+</html>
