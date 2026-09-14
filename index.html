@@ -35,7 +35,7 @@
         <div class="header_inner">
             <!-- 로고 -->
             <a href="index.html" class="header_logo" aria-label="쩜비">
-               🧟‍♀️
+               <img class="logo_img" src="/images/zompanyw.png">
             </a>
 
             <!-- 오른쪽 메뉴 전체 -->
@@ -103,30 +103,161 @@
             </div>
         </section>
         <!-- about 끝 -->
+         <!-- Project 시작 -->
+        <section class="project">
+
+            <!--project 제목-->
+            <div class="project_heading">
+                <h2>MEET THE ZOMBIES</h2>
+                <p>무덤에서 깨어난 좀비들을 확인하세요.</p>
+            </div>
+
+            <!--project 목록-->
+            <div class="project_list">
+                <!--프로젝트 목록 1 -->
+                <article class="project_card">
+                    <!--프로젝트 설명-->
+                    <div class="project_content">
+                        <h3>ZOMBIE 01</h3>
+                        <p>죽어버린 아이디어를 다시 깨우는 좀비입니다.<br>
+                        웹과 플랫폼을 물어뜯으며 새로운 경험으로 되살립니다.</p>
+                        <div class="project_subtitles">
+                            <h4>ABILITIES</h4>
+                        </div>
+                        <div class="project_tags">
+                            <span>Platform</span>
+                            <span>Web</span>
+                            <span>App</span>
+                            <span>AI</span>
+                        </div>
+                    </div>
+
+                    <!--프로젝트 이미지-->
+                    <div class="project_img">
+                        <img src="images/01z.png" alt="프로젝트 1">
+                    </div>
+                    
+                </article>
+                <!--프로젝트 목록 2 -->
+                <article class="project_card">
+                    <!--프로젝트 설명-->
+                    <div class="project_content">
+                        <h3>ZOMBIE 02</h3>
+                        <p>복잡한 문제의 냄새를 맡고 달려드는 좀비입니다.<br>
+                        엉켜버린 서비스를 정리하고 더 편리한 경험으로 감염시킵니다.</p>
+                        <div class="project_subtitles">
+                            <h4>ABILITIES</h4>
+                        </div>
+                        <div class="project_tags">
+                            <span>Platform</span>
+                            <span>Web</span>
+                            <span>App</span>
+                            <span>AI</span>
+                        </div>
+                    </div>
+
+                    <!--프로젝트 이미지-->
+                    <div class="project_img">
+                        <img src="images/02z.png" alt="프로젝트 2">
+                    </div>
+                    
+                </article>
+                <!--프로젝트 목록 3 -->
+                <article class="project_card">
+                    <!--프로젝트 설명-->
+                    <div class="project_content">
+                        <h3>ZOMBIE 03</h3>
+                        <p>새로운 기술이라면 일단 물고 보는 좀비입니다.<br>
+                        AI와 기술을 이용해 아직 세상에 없는 무언가를 만들어냅니다.</p>
+                        <div class="project_subtitles">
+                            <h4>ABILITIES</h4>
+                        </div>
+                        <div class="project_tags">
+                            <span>AI</span>
+                            <span>Tech</span>
+                            <span>Creative</span>
+                            <span>Experiment</span>
+                        </div>
+                    </div>
+
+                    <!--프로젝트 이미지-->
+                    <div class="project_img">
+                        <img src="images/03z.png" alt="프로젝트 3">
+                    </div>
+                    
+                </article>
+            </div>
+        </section>
+
+        <!-- Project 끝 -->
+        <!-- contact 시작 -->
+        <section class="contact">
+            <!-- sticker -->
+             <img class="contact_sticker_blue" src="images/sticker01.png">
+             <img class="contact_sticker_red" src="images/sticker02.png">
+
+               <!-- 텍스트 -->
+             <h2>WE ARE ALWAYS HUNGRY FOR
+                 <br>NEW IDEAS & BRAINS</h2>
+             <p>쩜비는 아직 세상에 없는 아이디어라면 언제든 환영합니다.<br>
+                죽어가는 아이디어도, 이제 막 태어난 아이디어도<br>
+                우리에게 던져주세요. 제대로 물어서 살아 움직이게 만들겠습니다. 🧟</p>
+
+             <!-- VIEW ALL PORTFOLIO 버튼 -->
+             <a href="portfolio.html" class="btn_portfolio">GET BITTEN</a>
+        </section>
+
+        <!-- contact 끝 -->
     </main>
     <!-- Main 끝 -->
 
-    <script>
-        document.addEventListener('mousemove', (event) => {
+   <!-- footer 시작 -->
+<footer class="footer">
 
-            const slime = document.createElement('div');
-            slime.classList.add('zombie_slime');
+    <!-- 회사 정보 -->
+    <div class="footer_info">
+        <h2>Z COMPANY</h2>
 
-    const randomSize = Math.random() * 12 + 6;
+        <p>
+            <strong>Address.</strong>
+            Somewhere in the Graveyard
+        </p>
 
-    slime.style.width = randomSize + 'px';
-    slime.style.height = randomSize + 'px';
+        <p>
+            <strong>Tel.</strong>
+            031-ZOM-BIES
+        </p>
 
-    slime.style.left = event.clientX + 'px';
-    slime.style.top = event.clientY + 'px';
+        <p>
+            <strong>Email.</strong>
+            bite@zcompany.com
+        </p>
+    </div>
 
-    document.body.appendChild(slime);
+    <!-- 구분선 -->
+    <div class="footer_line"></div>
 
-    setTimeout(() => {
-        slime.remove();
-    }, 1500);
+    <!-- 저작권과 태그 -->
+    <div class="footer_bottom">
 
-});
-    </script>
+        <p>© 2026 Z COMPANY. All rights reserved.</p>
+
+        <div class="footer_tags">
+            <span>WEB</span>
+            <span>APP</span>
+            <span>AI</span>
+        </div>
+
+    </div>
+
+    <!-- footer logo -->
+    <img class="footer_logo" src="images/zompanyb.png" alt="Z COMPANY logo">
+
+</footer>
+<!-- footer 끝 -->
+
+<!-- 커스텀 커서 -->
+<div class="cursor"></div>
+<script src="script.js"></script>
 </body>
 </html>
