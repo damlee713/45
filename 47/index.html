@@ -452,6 +452,19 @@
             letter-spacing: 1px;
         }
 
+        .result__badge--dead {
+            background: rgba(255, 30, 30, 0.25);
+            color: #ff3333;
+            border: 1px solid #ff3333;
+            box-shadow: 0 0 14px rgba(255, 51, 51, 0.4);
+        }
+
+        .result__badge--infected {
+            background: rgba(218, 112, 214, 0.2);
+            color: #d670d6;
+            border: 1px solid #ba55d3;
+        }
+
         .result__badge--beginner {
             background: rgba(255, 90, 54, 0.15);
             color: var(--color-warning);
@@ -464,11 +477,126 @@
             border: 1px solid var(--color-secondary);
         }
 
+        .result__badge--veteran {
+            background: rgba(0, 200, 255, 0.2);
+            color: #38d9a9;
+            border: 1px solid #38d9a9;
+            box-shadow: 0 0 12px rgba(56, 217, 169, 0.3);
+        }
+
         .result__badge--expert {
-            background: rgba(184, 255, 61, 0.2);
+            background: rgba(184, 255, 61, 0.25);
             color: var(--color-primary);
             border: 1px solid var(--color-primary);
-            box-shadow: 0 0 12px rgba(184, 255, 61, 0.3);
+            box-shadow: 0 0 16px rgba(184, 255, 61, 0.4);
+        }
+
+        /* Quiz HUD: Timer & HP Status */
+        .quiz__hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(20, 25, 20, 0.7);
+            border: 1px solid var(--color-border);
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+        }
+
+        .quiz__hp-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .quiz__hp-label {
+            font-family: var(--font-display);
+            color: var(--color-text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .quiz__hp-hearts {
+            letter-spacing: 2px;
+            font-size: 1.05rem;
+            color: #ff4757;
+            transition: transform 0.2s ease;
+        }
+
+        .quiz__hp-hearts.hp-pulse {
+            animation: heartDamage 0.4s ease;
+        }
+
+        .quiz__timer-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .quiz__timer-text {
+            color: var(--color-primary);
+            min-width: 24px;
+            text-align: right;
+            transition: color 0.2s ease;
+        }
+
+        .quiz__timer-text.danger {
+            color: #ff4757;
+            animation: pulseDanger 0.6s infinite alternate;
+        }
+
+        /* Choice feedback state */
+        .quiz__answer-btn--correct {
+            border-color: var(--color-primary) !important;
+            background-color: rgba(184, 255, 61, 0.2) !important;
+            color: var(--color-primary) !important;
+        }
+
+        .quiz__answer-btn--wrong {
+            border-color: #ff4757 !important;
+            background-color: rgba(255, 71, 87, 0.18) !important;
+            color: #ff6b81 !important;
+        }
+
+        .quiz__feedback-toast {
+            margin-top: 14px;
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            animation: fadeInCard 0.2s ease-out forwards;
+        }
+
+        .quiz__feedback-toast--good {
+            display: flex;
+            background: rgba(184, 255, 61, 0.15);
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .quiz__feedback-toast--bad {
+            display: flex;
+            background: rgba(255, 71, 87, 0.18);
+            border: 1px solid #ff4757;
+            color: #ff7675;
+        }
+
+        @keyframes heartDamage {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3) rotate(-6deg); }
+        }
+
+        @keyframes pulseDanger {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(1.15); opacity: 0.7; }
         }
 
         .result__illustration-placeholder {
@@ -735,9 +863,9 @@
                 </p>
 
                 <ul class="intro__tags-list">
-                    <li class="intro__tag-item">⏱️ 소요시간 1분</li>
-                    <li class="intro__tag-item">🧠 5가지 위기상황</li>
-                    <li class="intro__tag-item">🩸 B급 생존력 측정</li>
+                    <li class="intro__tag-item">⏱️ 제한시간 10초</li>
+                    <li class="intro__tag-item">❤️ 생존 체력 3칸</li>
+                    <li class="intro__tag-item">💀 8가지 극한 딜레마</li>
                 </ul>
 
                 <button type="button" id="btnStart" class="button button--primary" aria-label="좀비 생존 테스트 시작하기">
@@ -747,13 +875,25 @@
 
             <!-- 2. QUIZ SECTION -->
             <section id="quizSection" class="app-card quiz" aria-labelledby="quizTitle" aria-hidden="true">
+                <!-- In-Game HUD: Timer & HP -->
+                <div class="quiz__hud">
+                    <div class="quiz__hp-wrap">
+                        <span class="quiz__hp-label">HP</span>
+                        <span id="quizHearts" class="quiz__hp-hearts" aria-label="남은 생존 체력">❤️❤️❤️</span>
+                    </div>
+                    <div class="quiz__timer-wrap">
+                        <span aria-hidden="true">⏱️</span>
+                        <span id="quizTimer" class="quiz__timer-text">10s</span>
+                    </div>
+                </div>
+
                 <header class="quiz__header">
-                    <span id="quizCounter" class="quiz__step-indicator" aria-live="polite">01 / 05</span>
+                    <span id="quizCounter" class="quiz__step-indicator" aria-live="polite">01 / 08</span>
                     <span class="quiz__status-text">생존력 시뮬레이션 중</span>
                 </header>
 
                 <!-- Accessible Progress Bar -->
-                <div class="quiz__progress" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="테스트 진행 상황">
+                <div class="quiz__progress" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" aria-label="테스트 진행 상황">
                     <div id="quizProgressBar" class="quiz__progress-bar"></div>
                 </div>
 
@@ -770,6 +910,9 @@
                     <ul id="quizAnswersList" class="quiz__answers" aria-label="선택지 목록">
                         <!-- Dynamic rendered answers -->
                     </ul>
+
+                    <!-- Instant Feedback Toast -->
+                    <div id="quizFeedback" class="quiz__feedback-toast" role="alert" aria-live="polite"></div>
                 </article>
             </section>
 
@@ -790,7 +933,7 @@
 
                 <div class="result__score-chip">
                     <span>최종 생존 지수</span>
-                    <span id="resultScoreValue" class="result__score-num">0 / 10</span>
+                    <span id="resultScoreValue" class="result__score-num">0 / 24점</span>
                 </div>
 
                 <p id="resultDescription" class="result__description">
